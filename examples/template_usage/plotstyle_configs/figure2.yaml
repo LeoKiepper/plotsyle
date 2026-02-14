@@ -1,0 +1,8 @@
+import_base:
+  validator: yaml
+  source: literal
+  value: base_style.yaml
+
+linewidth:
+  source: field
+  value: linewidth_medium

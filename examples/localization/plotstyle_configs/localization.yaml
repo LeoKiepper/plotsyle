@@ -1,0 +1,6 @@
+title_str:
+  source: literal
+  localizable: True
+  value:
+    en: Magic square (3x3)
+    pt: Quadrado mágico (3x3)

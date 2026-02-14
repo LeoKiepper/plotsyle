@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from plotstyle import PlotStyle
-PS = PlotStyle(yaml_file="derived_fields.yaml", folder=".")
+PS = PlotStyle(yaml_file="derived_fields.yaml")
 
 
 x = np.linspace(0, 10, 100)

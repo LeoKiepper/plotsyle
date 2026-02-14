@@ -1,0 +1,11 @@
+import_base:
+  validator: yaml
+  source: literal
+  value: base_style.yaml
+
+linewidth_sine:
+  source: field
+  value: linewidth_thin
+linewidth_shiftedsine:
+  source: field
+  value: linewidth_thin
