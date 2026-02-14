@@ -15,3 +15,6 @@ When it is `literal` (default value), the parser will load onto the PlotStyle ob
 When it is `field`, the parser will look for a field whose name is read verbatim from `value`, and copy it's value. 
 
 The most important use for this functionality is to enable writing fields for templates. See the example `derived_fields.py` and it's accompanying file `derived_fields.yaml`.
+
+## Recursive loading
+To allow chain loading fields from secondary yaml files, specify the property `validator: yaml`. This will direct the parser to recurse itself into loading fields within the specified file. This functionality, along with derived fields, enables the creation of template yaml files. For instance, one might compose a number of figures for some publication, that in all likelihood will share a number of options for it's constituent plot commands. 
