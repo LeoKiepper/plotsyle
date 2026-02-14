@@ -5,7 +5,7 @@ Most advanced functionalities require declaring explicit field properties in the
 ```yaml
 field_name:
   source: literal       # 'literal' OR 'field'
-  value: # 
+  value: # whatever value is required goes here
 ```
 
 ## Dervied fields
