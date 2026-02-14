@@ -9,7 +9,7 @@ field_name:
 ```
 
 ## Dervied fields
-You can specify that a field's value to read value computed from a previously computed field.
+You can specify that a field's value be computed from a previously computed field.
 The `source` property controls how the parser will interpret the `value` property. 
 When it is `literal` (default value), the parser will load onto the PlotStyle object the verbatim value written in the value property. 
 When it is `field`, the parser will look for a field whose name is read verbatim from `value`, and copy it's value. 
