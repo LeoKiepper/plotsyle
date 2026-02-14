@@ -18,18 +18,19 @@ When it is `field`, the parser will look for a field whose name is read verbatim
 
 The most important use for this functionality is to enable writing fields for templates. See the example `derived_fields`.
 
-## Recursive loading
+## Recursive loading and template usage
 To direct the parser to chain load fields from secondary yaml files, specify the property `validator: yaml`. The field that specifies which yaml file to read will not load onto the final object, but all fields declared in the file will. This will direct the parser to recurse itself into loading fields within the specified file. This functionality, along with derived fields, enables the creation of template yaml files. For instance, one might compose a number of figures for some document, that in all likelihood will share a number of options for it's constituent plot commands. Instead of repeating these options on however many yaml files are created for these figures, it is highly preferrable to define repeated options once in a template file, and reference these fields as necessary. This helps with code maintenance, editorializing and consistency. See the example `template_usage` and it's associated files
 
 Specifying `validator: yaml` is the unambiguous flag for the parser to know a field should be processed in yaml chaining. It is strongly recommended to treat 'yaml' as a reserved field name.
 
 It is also possible to chain yaml parsing on multiple levels by specifying files within files, but this is discouraged in favor of specifying a single-layer list of yaml files, which are loaded first to last (left to right), such as demonstrated in the configs section.
 
+The primary purpose of this feature is to enable the creation of templates that comply with the formatting requirements of specific target publications. For example, one could define a template that specifies font sizes, figure dimensions, and other commonly used fields shared across multiple articles within a given venue, producing properly formatted figures for a two-column journal layout (e.g., IEEE). A separate template could be created for a one-column publication (such as an institutional repository), and another for slideshow presentations.
 
-The most important use for this feature is the creation of templates that conform to formatting requirements for one or more specific target publications. For instance, one might create a template consisting of fontsizes, linewidths, figure sizes, and whatever other fields might be commonly used across many different articles, that result in well formatted figures for a two-column layout journal (e.g. associated with IEEE), a separate template for another one-column publication (e.g. for some institutional repository), and a third to make figures well formatted for slideshow presentations. Importantly, all these templates must agree in field names and the variables they represent, in such a way that they are perfectly interchangeable. This serves to rationalize editorialization and avoid repeated work for large groups of people, such as a research group.
+Crucially, all templates must use the same field names and represent the same underlying variables so that they remain fully interchangeable. This approach streamlines editorial workflows and eliminates redundant effort, particularly within large groups such as research teams.
 
 ## Localization
-Fields can have a `localizable` property to allow for translation into different languages. For this, the user must define values for each language. See the `localization` example. 
+Fields can have a `localizable` property to allow for translation into different languages. For this, the user must define values for each language. See the `localization` example. This is meant for localization of text, but nothing impedes it to be used for othe types of data, which may or may have niche use-cases.
 
 ## The 'configs' field
-
+To fully utilize both the template and localization functionalities, it is best to define multiple template and localization combinations in the same yaml file, as though each of these combinations configures a different 'version' of the same figure. This is done using the reserved field name `configs`. When specifying a configs field, the user must generate the PlotStyle objects necessarily through the `load_plotstyle` and `PSTemplate.expand` methods. In doing so, the plotting script should iterate over all configurations, repeating itself however many times are specified. See the example `configs` for more details.
