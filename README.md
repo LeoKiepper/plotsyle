@@ -4,7 +4,7 @@ Python library to organize matplotlib plots by loading plot command options from
 pip install parse
 ```
 
-The main logic of this library is declaring fields in a yaml file to be loaded onto a single object that contains all options for matplotlib commands to compose a specific figure within a script. The fields are read from the file top-to-bottom, and by design, eventual conflicts are resolved by overwriting.
+The main logic of this library is declaring fields in a yaml file to be loaded onto a single object that contains all options for matplotlib commands to compose a specific figure within a script. The fields are read from the file top-to-bottom, and by design, eventual conflicts are resolved by overwriting. Also by design, it is strongly recommended to write one yaml file for each figure being generated.
 
 Field names are user-defined and have nothing to do how matplotlib works. For instance, if you want to specify a fontsize and string for a figure title, one might write the yaml file 'example.yaml' and it's matching use in a plotting script as
 ```yaml
